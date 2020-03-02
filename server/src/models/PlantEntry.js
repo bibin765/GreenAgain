@@ -3,17 +3,32 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
+const requiredNumber = {
+  type: Number,
+  required: true,
+};
 
 const plantEntrySchema = new Schema({
-  region: {
+  name: {
     type: String,
     required: true,
   },
+  email: String,
   description: String,
   image: String,
   plantDate: {
     required: true,
     type: Date,
+  },
+  latitude: {
+    ...requiredNumber,
+    min: -90,
+    max: 90,
+  },
+  longitude: {
+    ...requiredNumber,
+    min: -180,
+    max: 180,
   },
 }, {
   timestamps: true,

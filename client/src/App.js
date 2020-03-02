@@ -17,11 +17,13 @@ function App() {
     zoom: 3
   });
 
+  const getEntries = async () => {
+    const plantEntries = await listPlantEntries();
+    setPlantEntries(plantEntries);
+  };
+
   useEffect( () => {
-    (async () => {
-      const plantEntries = await listPlantEntries();
-      setPlantEntries(plantEntries);
-    })();
+      getEntries();
      }, []);
 
   const showAddMarkerPopup = (event) => {
@@ -38,8 +40,9 @@ function App() {
     <Navbar.Brand href="#home" id="title">Greenagain</Navbar.Brand>
     <Nav className="mr-auto">
       <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#features">Blog</Nav.Link>
-      <Nav.Link href="#pricing">Stats</Nav.Link>
+      <Nav.Link href="#blog">Blog</Nav.Link>
+      <Nav.Link href="#stats">Stats</Nav.Link>
+      <Nav.Link href="#count">Count:{plantEntries.length}</Nav.Link>
     </Nav>
     </Navbar>
     <ReactMapGL 
@@ -65,13 +68,13 @@ function App() {
                 width: `${3 * viewport.zoom}px`,
               }} 
               stroke="#00ff00" 
-              strokeWidth="1" 
+              // stroke-width="1" 
               fill="none"
               onClick={() => setShowPopup({
                 [entry._id]: true,
               })} 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
+              // stroke-linecap="round" 
+              // stroke-linejoin="round" 
               className="css-i6dzq1 marker">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
@@ -90,7 +93,8 @@ function App() {
                 <div className = "popup">
                   {entry.name.toUpperCase()}
                   <br /> 
-                <small>Planted On:{new Date(entry.plantDate).toLocaleDateString()}</small> 
+                <small>Planted On:{new Date(entry.plantDate).toLocaleDateString()}</small>
+                {entry.image && <img src={entry.image} alt={entry.title} />} 
                 </div>
               </Popup>
             ) : null
@@ -114,9 +118,9 @@ function App() {
                 }}  
                 viewBox="0 0 24 24" 
                 fill="none" stroke="red" 
-                strokWidth="2" 
-                strokeLinecap="round" 
-                strokeLineJoin="round" 
+                // strok-width="2" 
+                // stroke-linecap="round" 
+                stroke-linejoin="round" 
                 className="feather feather-map-pin marker">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3">
@@ -133,7 +137,10 @@ function App() {
               onClose={() => setAddEntryLocation(null)}
               anchor="top" >
               <div className = "popup">
-                <PlantEntryForm /> 
+                <PlantEntryForm onClose={() => {
+                  setAddEntryLocation(null);
+                  getEntries();
+                }} location={addEntryLocation}/> 
               </div>
           </Popup>
           </>

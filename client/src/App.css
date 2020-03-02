@@ -12,7 +12,7 @@
 }
 .popup{
     /* background-color:#00ff00; */
-    max-width: 400px;
+    width: 30vw;
     padding: 1rem;
 }
 .markerred{
@@ -27,3 +27,14 @@
   display: block;
   width: 100%;
 }
+
+.error{
+    color:red;
+}
+.popup img {
+    height: 200px;
+    width: auto;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }

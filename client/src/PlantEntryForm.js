@@ -1,22 +1,43 @@
-import React from 'react';
+import React,{ useState } from 'react';
+import { useForm } from 'react-hook-form'
+import { createPlantEntry } from './API'
 //import { Form } from 'react-bootstrap/lib/Navbar';
 
-const PlantEntryForm = () => {
+const PlantEntryForm = ({ location, onClose }) => {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const { register, handleSubmit} = useForm();
+
+    const onSubmit = async (data) => {
+        try {
+            setLoading(true);
+            data.latitude = location.latitude;
+            data.longitude = location.longitude;
+            console.log(data)
+            await createPlantEntry(data);
+            onClose();
+        } catch (error) {
+            console.log(error);
+            setError(error.message);
+            setLoading(false);
+        }
+        
+    }
+
     return(
-        <form class="entry-form">
+        <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
+        {error ? <h3 className="error">{error}</h3> : null}
         <label htmlFor="name">Name</label>
-        <input name="name" required />
+        <input name="name" required ref={register}/>
         <label htmlFor="email">Email</label>
-        <input name="email" type="email" />
+        <input name="email" type="email" ref={register} />
         <label htmlFor="description">Description</label>
-        <textarea name="description" rows={3}></textarea>
+        <textarea name="description" rows={3} ref={register}></textarea>
         <label htmlFor="image">Image</label>
-        <input name="image" />
+        <input name="image" ref={register}/>
         <label htmlFor="plantDate">Plant Date</label>
-        <input name="plantDate" type="date" />
-
-
-
+        <input name="plantDate" type="date" required ref={register}/>
+        <button disabled = {loading}>{loading ? 'loading..' :'Create Plant'}</button>
     </form>
     );
 };

@@ -11,12 +11,12 @@ class Navmain extends React.Component{
     }
     render(){
         return(
-            <Navbar id="navbar">
-            <Navbar.Brand id="title"><b><Link to="/" style={{ color: '#fff' }}>Greenagain</Link></b></Navbar.Brand>
+            <Navbar className="navbar navbar-dark bg-custom-2" >
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Brand id="title"><b><Link to="/" style={{ color: '#070707' }}>GreenagainChallenge</Link></b></Navbar.Brand>
             <Nav className="mr-auto">
-            <Nav.Link ><Link to="/" style={{ color: '#fff' }}>Home</Link></Nav.Link>
-            <Nav.Link ><Link to="/map" style={{ color: '#fff' }}>Map</Link></Nav.Link>
-            <Nav.Link ><Link to="/stats" style={{ color: '#fff' }}>Stats</Link></Nav.Link>
+            <Nav.Link ><Link to="/" style={{ color: '#070707' }}>Home</Link></Nav.Link>
+            <Nav.Link ><Link to="/map" style={{ color: '#070707' }}>Map</Link></Nav.Link>
             </Nav>
             </Navbar>
         );

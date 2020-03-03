@@ -1,16 +1,22 @@
 #title{
-    color:#343332;
-    font-family:sans-serif;
+    color:#070707;
+    font-family: 'Lato', sans-serif;
 } 
-#navbar{
-    background-color: #343332;
-}
+
+.bg-custom-1 {
+    background-color: #85144b;
+  }
+  
+  .bg-custom-2 {
+    background-color: #20bf55;
+    background-image :linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    
+  }
 
 .marker{
     transform: translate(-50%,-100%);
 }
-.popup{
-    background-color: #343332; 
+.popup{ 
     width: 50vw;
     padding: 1rem;
 }
@@ -39,5 +45,35 @@
   }
 
 body{
-    background-color: #343332;
+    background-color: rgb(223, 214, 214);
+ 
 }
+.mainimage{
+    margin-top: 5rem;
+    margin-left: 2rem;
+    width: 20rem;
+    height:20rem;
+    display: inline-block;
+}
+
+.inline-block {
+    display: inline-block;
+ 
+  }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #343332;
+    color: white;
+    text-align: center;
+  }
+
+  .count{
+    background-color: #20bf55;
+    background-image :linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    padding-left: 2rem;
+  }
+ 

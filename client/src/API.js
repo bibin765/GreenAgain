@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:1337';
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:1337' : 'https://green-again-api.now.sh';
+
 
 
 export async function listPlantEntries ()

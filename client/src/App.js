@@ -3,7 +3,6 @@ import ReactMapGL,{Marker, Popup} from 'react-map-gl';
 import { listPlantEntries } from './API';
 import PlantEntryForm from './PlantEntryForm'
 import './App.css'
-import Navmain from './Navmain';
 
 function App() {
   const [ plantEntries, setPlantEntries] = useState([]);
@@ -36,6 +35,7 @@ function App() {
 
   return (
     <div>
+      <h5 className="count">Current Count : {plantEntries.length}</h5>
     <ReactMapGL 
       {...viewport}
       mapStyle="mapbox://styles/thecjreynolds/ck117fnjy0ff61cnsclwimyay"

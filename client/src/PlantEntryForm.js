@@ -1,7 +1,6 @@
 import React,{ useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { createPlantEntry } from './API'
-//import { Form } from 'react-bootstrap/lib/Navbar';
 
 const PlantEntryForm = ({ location, onClose }) => {
     const [loading, setLoading] = useState(false);
@@ -25,6 +24,7 @@ const PlantEntryForm = ({ location, onClose }) => {
     }
 
     return(
+        <div>
         <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         {error ? <h3 className="error">{error}</h3> : null}
         <label htmlFor="name">Name</label>
@@ -32,13 +32,14 @@ const PlantEntryForm = ({ location, onClose }) => {
         <label htmlFor="email">Email</label>
         <input name="email" type="email" ref={register} />
         <label htmlFor="description">Description</label>
-        <textarea name="description" rows={3} ref={register}></textarea>
+        <textarea name="description" rows={2} ref={register}></textarea>
         <label htmlFor="image">Image</label>
         <input name="image" ref={register}/>
         <label htmlFor="plantDate">Plant Date</label>
         <input name="plantDate" type="date" required ref={register}/>
         <button disabled = {loading}>{loading ? 'loading..' :'Create Plant'}</button>
-    </form>
+        </form>
+        </div>
     );
 };
 

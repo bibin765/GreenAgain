@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapGL,{Marker, Popup} from 'react-map-gl';
-import { Navbar,Nav } from 'react-bootstrap'
 import { listPlantEntries } from './API';
 import PlantEntryForm from './PlantEntryForm'
 import './App.css'
+import Navmain from './Navmain';
 
 function App() {
   const [ plantEntries, setPlantEntries] = useState([]);
@@ -36,15 +36,6 @@ function App() {
 
   return (
     <div>
-    <Navbar id="navbar">
-    <Navbar.Brand href="#home" id="title">Greenagain</Navbar.Brand>
-    <Nav className="mr-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#blog">Blog</Nav.Link>
-      <Nav.Link href="#stats">Stats</Nav.Link>
-      <Nav.Link href="#count">Count:{plantEntries.length}</Nav.Link>
-    </Nav>
-    </Navbar>
     <ReactMapGL 
       {...viewport}
       mapStyle="mapbox://styles/thecjreynolds/ck117fnjy0ff61cnsclwimyay"
@@ -133,10 +124,11 @@ function App() {
               longitude={addEntryLocation.longitude}
               closeButton={true}
               closeOnClick={false}
+              className = "popup"
               dynamicPosition={true}
               onClose={() => setAddEntryLocation(null)}
               anchor="top" >
-              <div className = "popup">
+              <div >
                 <PlantEntryForm onClose={() => {
                   setAddEntryLocation(null);
                   getEntries();

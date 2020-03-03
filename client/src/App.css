@@ -1,18 +1,17 @@
 #title{
     color:#343332;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-decoration: solid;
-}
+    font-family:sans-serif;
+} 
 #navbar{
-    background-color:#00ff00;
+    background-color: #343332;
 }
 
 .marker{
     transform: translate(-50%,-100%);
 }
 .popup{
-    /* background-color:#00ff00; */
-    width: 30vw;
+    background-color: #343332; 
+    width: 50vw;
     padding: 1rem;
 }
 .markerred{
@@ -38,3 +37,7 @@
     margin: 0 auto;
     display: block;
   }
+
+body{
+    background-color: #343332;
+}
